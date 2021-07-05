@@ -3,8 +3,7 @@ const multer = require('multer')
 const multerConfig = require('./config/multer')
 
 routes.post('/upload', multer(multerConfig).single('file'), (req, res) => {
-    console.log(req.file)
-    return res.json({hello: 'World 2'})
+    console.log(req.file)    
 })
 
 module.exports = routes
