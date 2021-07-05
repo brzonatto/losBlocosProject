@@ -1,0 +1,21 @@
+aside.nav-area {
+    background-color:  rgb(32, 32, 32);    
+}
+
+.nav a {
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 300;
+    padding: 10px 3px;    
+}
+
+.nav span {
+    padding: 0 10px;
+}
+
+.nav a:hover {
+    background: linear-gradient(135deg, #07A7E3 0, #32DAC3 100%);
+}
