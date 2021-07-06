@@ -8,7 +8,7 @@ module.exports = {
             cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads'))
         },
         filename: (req, file, cb) => {
-            cb(null, file.originalname)
+            cb(null, 'gameImage.jpg')
         }
     }),
     limits: {
