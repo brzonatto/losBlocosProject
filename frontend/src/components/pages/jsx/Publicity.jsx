@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Main from '../../templates/jsx/Main'
-import axios from 'axios'
+const axios = require('axios').default;
 
 
 
@@ -9,9 +9,11 @@ export function Publicity() {
     const [golsContra, setGolsContra] = useState()
     const [file, setFile] = useState()
 
+    
+
     const teste = event => {
         const data = new FormData()
-        data.append('file', file)
+        data.append('file', file)          
 
         axios.post('http://localhost:3000/upload', data)
             .then(res => console.log(res))
@@ -20,9 +22,9 @@ export function Publicity() {
 
     const teste2 = event => {
         const data = new FormData()
-        data.append('golsPro', golsPro)
+        data.append('golsPro', golsPro) 
         data.append('golsContra', golsContra)
-
+        
         axios.post('http://localhost:3000/make', data)
             .then(res => console.log(res))
             .catch(err => console.log(err))
@@ -34,11 +36,14 @@ export function Publicity() {
                 <div>Publicidade</div>
                 <hr />
                 <p>Instagram</p>
+                
                 <input type="file" name="file" onChange={event => {
                     const file = event.target.files[0]
                     setFile(file)
-                }} /> <br />
+                }} />
+                 <br />
                 <button onClick={teste}>Submit</button><br /><br />
+                
                 <input type="text" name="golsPro" onChange={event => {
                     const { value } = event.target
                     setGolsPro(value)
@@ -47,6 +52,7 @@ export function Publicity() {
                     const { value } = event.target
                     setGolsContra(value)
                 }} />  
+                
                 <button onClick={teste2}>make</button>
             </div>
         </Main>
