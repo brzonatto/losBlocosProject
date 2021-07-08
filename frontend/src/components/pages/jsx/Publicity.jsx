@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import PostForm from './PostForm'
 import Main from '../../templates/jsx/Main'
 const axios = require('axios').default;
 
 
 
+
 export function Publicity() {
-    const [golsPro, setGolsPro] = useState()
-    const [golsContra, setGolsContra] = useState()
+    // const [golsPro, setGolsPro] = useState()
+    // const [golsContra, setGolsContra] = useState()
     const [file, setFile] = useState()
 
     
@@ -20,15 +22,15 @@ export function Publicity() {
             .catch(err => console.log(err))
     }
 
-    const teste2 = event => {
-        const data = new FormData()
-        data.append('golsPro', golsPro) 
-        data.append('golsContra', golsContra)
+    // const teste2 = event => {
+    //     const data = new FormData()
+    //     data.append('golsPro', golsPro) 
+    //     data.append('golsContra', golsContra)
         
-        axios.post('http://localhost:3000/make', data)
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
-    }
+    //     axios.post(`http://localhost:3000/make`, data)
+    //         .then(res => console.log(res))
+    //         .catch(err => console.log(err))
+    // }
 
     return (
         <Main>
@@ -43,7 +45,7 @@ export function Publicity() {
                 }} />
                  <br />
                 <button onClick={teste}>Submit</button><br /><br />
-                
+{/*                 
                 <input type="text" name="golsPro" onChange={event => {
                     const { value } = event.target
                     setGolsPro(value)
@@ -51,9 +53,9 @@ export function Publicity() {
                 <input type="text" name="golsContra" onChange={event => {
                     const { value } = event.target
                     setGolsContra(value)
-                }} />  
-                
-                <button onClick={teste2}>make</button>
+                }} />   */}
+                <PostForm />
+                {/* <button onClick={teste2}>make</button> */}
             </div>
         </Main>
     )

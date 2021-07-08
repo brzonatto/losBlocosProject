@@ -9,9 +9,9 @@ routes.post('/upload', multer(multerConfig).single('file'), (req, res) => {
     return res.json({ process: 'Sucess' })   
 })
 
-routes.post('/make', (req, res, next) => { 
+routes.post('/make', (req, res) => { 
     console.log(req.body)     
-    jimpConfig.resizeGameImage('tmp/uploads/gameImage.jpg')    
+    jimpConfig.resizeGameImage(req.body.golsPro, req.body.golsContra, 'tmp/uploads/gameImage.jpg')    
     return res.json({ process: 'Sucess' })
 })
 

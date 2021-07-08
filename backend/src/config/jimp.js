@@ -1,7 +1,5 @@
 const Jimp = require('jimp')
 
-const golsPro = 3
-const golsContra = 4
 const gols = []
 const assists = []
 
@@ -34,7 +32,7 @@ assists.sort(ordenarPorQntAssists)
 let golsMoreAssists = gols.length + assists.length
 
 
-async function resizeGameImage(image) {
+async function resizeGameImage(golsPro, golsContra, image) {
     const gameImage = await Jimp.read(image)
     const background = await Jimp.read('src/assets/templates/afterGame/2021/background.png')
     const rectEndGame = await Jimp.read('src/assets/templates/afterGame/2021/retangulo-fim-de-jogo.png')
@@ -48,7 +46,7 @@ async function resizeGameImage(image) {
     const win = await Jimp.read('src/assets/templates/afterGame/2021/win.png')
     const loss = await Jimp.read('src/assets/templates/afterGame/2021/loss.png')
     const draw = await Jimp.read('src/assets/templates/afterGame/2021/versus.png')
-
+   
     const font = await Jimp.loadFont('src/assets/fonts/MYRIAD_PRO_BOLD_96_BLACK.fnt')
     const fontGolsAssists = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK)
 
@@ -61,12 +59,12 @@ async function resizeGameImage(image) {
     background.composite(symbolOpponent, 665, 740)
     background.composite(versus, 520, 830)
     background.print(font, 470, 790, {
-        text: golsPro.toString(),
+        text: golsPro,
         alignmentX: Jimp.HORIZONTAL_ALIGN_RIGHT,
         alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
     }, 50, -115)
     background.print(font, 555, 790, {
-        text: golsContra.toString(),
+        text: golsContra,
         alignmentX: Jimp.HORIZONTAL_ALIGN_LEFT,
         alignmentY: Jimp.VERTICAL_ALIGN_MIDDLE
     }, 50, -115)
@@ -119,9 +117,9 @@ async function resizeGameImage(image) {
         separator.resize(Jimp.AUTO, 250)
         background.composite(separator, 39, 725)
     }
-    if (golsPro < golsContra) {
+    if (Number(golsPro) < Number(golsContra)) {
         background.composite(loss, 5.64, 1049)
-    } else if (golsPro > golsContra) {
+    } else if (Number(golsPro) > Number(golsContra)) {
         background.composite(win, 5.64, 1049)
     } else {
         background.composite(draw, 5.64, 1049)
