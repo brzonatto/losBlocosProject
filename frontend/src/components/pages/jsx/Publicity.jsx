@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
 import PostForm from './PostForm'
 import Main from '../../templates/jsx/Main'
-const axios = require('axios').default;
+const axios = require('axios').default
 
 
 
 
-export function Publicity() {
-    // const [golsPro, setGolsPro] = useState()
-    // const [golsContra, setGolsContra] = useState()
-    const [file, setFile] = useState()
-
-    
+export function Publicity() {    
+    const [file, setFile] = useState()    
 
     const teste = event => {
         const data = new FormData()
@@ -20,17 +16,7 @@ export function Publicity() {
         axios.post('http://localhost:3000/upload', data)
             .then(res => console.log(res))
             .catch(err => console.log(err))
-    }
-
-    // const teste2 = event => {
-    //     const data = new FormData()
-    //     data.append('golsPro', golsPro) 
-    //     data.append('golsContra', golsContra)
-        
-    //     axios.post(`http://localhost:3000/make`, data)
-    //         .then(res => console.log(res))
-    //         .catch(err => console.log(err))
-    // }
+    }    
 
     return (
         <Main>
@@ -45,17 +31,8 @@ export function Publicity() {
                 }} />
                  <br />
                 <button onClick={teste}>Submit</button><br /><br />
-{/*                 
-                <input type="text" name="golsPro" onChange={event => {
-                    const { value } = event.target
-                    setGolsPro(value)
-                }} />
-                <input type="text" name="golsContra" onChange={event => {
-                    const { value } = event.target
-                    setGolsContra(value)
-                }} />   */}
-                <PostForm />
-                {/* <button onClick={teste2}>make</button> */}
+
+                <PostForm />                
             </div>
         </Main>
     )
