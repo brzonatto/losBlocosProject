@@ -3,18 +3,32 @@ import axios from 'axios'
 
 class PostForm extends Component {
     constructor(props) {
-        super(props)
+        super(props)        
 
         this.state = {
             golsPro: '',
             golsContra: '',
-            gols: ''
-        }        
+            gols: [{
+                author: '', 
+                amount: ''
+            }]             
+        }    
+        
+        
     }
 
     changeHandler = event => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value })        
     }
+
+    changeHandler2 = event => {
+        
+        this.setState({            
+            [event.target.name]: event.target.value
+        })
+
+    }
+
 
     submitHandler = event => {
         event.preventDefault()
@@ -26,23 +40,12 @@ class PostForm extends Component {
             .catch(err => {
                 console.log(err)
             })
-    }   
-
-    // clickHandler = event => {           
-    //     event.preventDefault()
-    //     console.log('teste')  
-    //     const { gols } = this.state      
-    //     let box = document.getElementById('box')
-    //     let elemento = document.createElement('input')        
-    //     elemento.setAttribute('type', 'text')        
-    //     elemento.setAttribute('name', 'gols')  
-    //     elemento.setAttribute('value', gols)  
-    //     elemento.setAttribute('onChange', '{this.changeHandler}')
-    //     box.appendChild(elemento)        
-    // }    
+    }      
+    
 
     render() {
-        const { golsPro, golsContra, gols } = this.state
+        const { golsPro, golsContra, gols } = this.state        
+        
 
         return (
             <form onSubmit={this.submitHandler}>
@@ -54,9 +57,19 @@ class PostForm extends Component {
                 </div>
                 <br />
                 <div id="box" className="box">
-                    <input type="text" name="gols" value={gols} onChange={this.changeHandler} />
-                </div>  
-                {/* <button id="add" onClick={this.clickHandler}>Add</button>     */}
+                    <input 
+                        type="text" 
+                        name="author" 
+                        value={gols.author} 
+                        onChange={this.changeHandler2} />
+                    <input 
+                        type="text" 
+                        name="amount" 
+                        value={gols.amount} 
+                        onChange={this.changeHandler2} />
+                </div>   
+                <br />
+                <button>Adicionar</button>               
                 <br />
                 <br />
                 <button type="submit">Submit</button>

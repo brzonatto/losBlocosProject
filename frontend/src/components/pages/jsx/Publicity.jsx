@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PostForm from './PostForm'
+import PostForm from './PostForm2'
 import Main from '../../templates/jsx/Main'
 const axios = require('axios').default
 
