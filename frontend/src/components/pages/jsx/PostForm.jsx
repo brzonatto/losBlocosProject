@@ -11,7 +11,7 @@ class PostForm extends Component {
             gols: [{
                 author: '', 
                 amount: ''
-            }]             
+            }]                        
         }    
         
         

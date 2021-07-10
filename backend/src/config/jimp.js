@@ -1,8 +1,5 @@
 const Jimp = require('jimp')
 
-const gols = []
-const assists = []
-
 function Gols(nome, qntGols) {
     this.nome = nome,
         this.qntGols = qntGols
@@ -12,12 +9,33 @@ function Assists(nome, qntAssists) {
         this.qntAssists = qntAssists
 }
 
-gols.push(new Gols('Cicero', 2))
-gols.push(new Gols('Brunno', 3))
-gols.push(new Gols('Biel', 2))
-assists.push(new Assists('Biel', 1))
-assists.push(new Assists('Brunno', 5))
-assists.push(new Assists('Cicero', 2))
+function addGols(gols) {
+    const golsOfMatch = []
+    for (let i = 0; i < gols.length; i++) {
+        golsOfMatch.push(new Gols(gols[i].author, gols[i].amount))               
+    }
+
+    golsOfMatch.sort(ordenarPorQntGols)
+    return golsOfMatch
+}
+
+function addAssists(assists) {
+    const assistsOfMatch = []
+    for (let i = 0; i < assists.length; i++) {
+        assistsOfMatch.push(new Assists(assists[i].author, assists[i].amount))               
+    }
+
+    assistsOfMatch.sort(ordenarPorQntAssists)
+    return assistsOfMatch
+}
+
+
+// gols.push(new Gols('Cicero', 2))
+// gols.push(new Gols('Brunno', 3))
+// gols.push(new Gols('Biel', 2))
+// assists.push(new Assists('Biel', 1))
+// assists.push(new Assists('Brunno', 5))
+// assists.push(new Assists('Cicero', 2))
 
 function ordenarPorQntGols(a, b) {
     return a.qntGols - b.qntGols;
@@ -26,13 +44,13 @@ function ordenarPorQntAssists(a, b) {
     return a.qntAssists - b.qntAssists;
 }
 
-gols.sort(ordenarPorQntGols)
-assists.sort(ordenarPorQntAssists)
-
-let golsMoreAssists = gols.length + assists.length
+// gols.sort(ordenarPorQntGols)
+// assists.sort(ordenarPorQntAssists)
 
 
-async function resizeGameImage(golsPro, golsContra, image) {
+
+
+async function resizeGameImage(golsPro, golsContra, golsEndMatch, assistsEndMatch, image) {
     const gameImage = await Jimp.read(image)
     const background = await Jimp.read('src/assets/templates/afterGame/2021/background.png')
     const rectEndGame = await Jimp.read('src/assets/templates/afterGame/2021/retangulo-fim-de-jogo.png')
@@ -49,6 +67,10 @@ async function resizeGameImage(golsPro, golsContra, image) {
    
     const font = await Jimp.loadFont('src/assets/fonts/MYRIAD_PRO_BOLD_96_BLACK.fnt')
     const fontGolsAssists = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK)
+
+    const gols = addGols(golsEndMatch)
+    const assists = addAssists(assistsEndMatch)
+    let golsMoreAssists = gols.length + assists.length
 
     gameImage.resize(994, 724)
     background.composite(gameImage, 43, 0)
