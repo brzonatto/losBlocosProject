@@ -4,6 +4,7 @@ function Gols(nome, qntGols) {
     this.nome = nome,
         this.qntGols = qntGols
 }
+
 function Assists(nome, qntAssists) {
     this.nome = nome,
         this.qntAssists = qntAssists
@@ -29,26 +30,12 @@ function addAssists(assists) {
     return assistsOfMatch
 }
 
-
-// gols.push(new Gols('Cicero', 2))
-// gols.push(new Gols('Brunno', 3))
-// gols.push(new Gols('Biel', 2))
-// assists.push(new Assists('Biel', 1))
-// assists.push(new Assists('Brunno', 5))
-// assists.push(new Assists('Cicero', 2))
-
 function ordenarPorQntGols(a, b) {
     return a.qntGols - b.qntGols;
 }
 function ordenarPorQntAssists(a, b) {
     return a.qntAssists - b.qntAssists;
 }
-
-// gols.sort(ordenarPorQntGols)
-// assists.sort(ordenarPorQntAssists)
-
-
-
 
 async function resizeGameImage(golsPro, golsContra, golsEndMatch, assistsEndMatch, image) {
     const gameImage = await Jimp.read(image)
@@ -63,7 +50,7 @@ async function resizeGameImage(golsPro, golsContra, golsEndMatch, assistsEndMatc
     const separator = await Jimp.read('src/assets/templates/afterGame/2021/separator.png')
     const win = await Jimp.read('src/assets/templates/afterGame/2021/win.png')
     const loss = await Jimp.read('src/assets/templates/afterGame/2021/loss.png')
-    const draw = await Jimp.read('src/assets/templates/afterGame/2021/versus.png')
+    const draw = await Jimp.read('src/assets/templates/afterGame/2021/draw.png')
    
     const font = await Jimp.loadFont('src/assets/fonts/MYRIAD_PRO_BOLD_96_BLACK.fnt')
     const fontGolsAssists = await Jimp.loadFont(Jimp.FONT_SANS_16_BLACK)
@@ -140,11 +127,11 @@ async function resizeGameImage(golsPro, golsContra, golsEndMatch, assistsEndMatc
         background.composite(separator, 39, 725)
     }
     if (Number(golsPro) < Number(golsContra)) {
-        background.composite(loss, 5.64, 1049)
+        background.composite(loss, 5.64, 1051)
     } else if (Number(golsPro) > Number(golsContra)) {
         background.composite(win, 5.64, 1049)
     } else {
-        background.composite(draw, 5.64, 1049)
+        background.composite(draw, 5.64, 1052)
     }
     background.writeAsync('tmp/composite.png')
 }
