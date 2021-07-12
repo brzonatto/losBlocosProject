@@ -11,6 +11,9 @@ export const Nav = props =>
             <Link to="/publicidade">
                 <span className="material-icons group">image</span> Publicidade
             </Link>
+            <Link to="/patrocinadores">
+                <span className="material-icons group">thumb_up</span> Patrocinadores
+            </Link>
         </nav>
     </aside>
 

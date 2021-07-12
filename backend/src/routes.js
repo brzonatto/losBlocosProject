@@ -2,6 +2,7 @@ const routes = require('express').Router()
 const multer = require('multer')
 const multerConfig = require('./config/multer')
 const jimpConfig = require('./config/jimp')
+const Sponsors = require('./config/sponsorsControl')
 
 routes.post('/upload', multer(multerConfig).single('file'), (req, res) => {    
     console.log(req.body.golsPro)
@@ -19,5 +20,7 @@ routes.post('/make', (req, res) => {
         'tmp/uploads/gameImage.jpg')    
     return res.json({ process: 'Sucess' })
 })
+
+routes.post('/api/sponsor', Sponsors.create)
 
 module.exports = routes
