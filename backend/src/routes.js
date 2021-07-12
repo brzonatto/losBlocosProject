@@ -22,5 +22,7 @@ routes.post('/make', (req, res) => {
 })
 
 routes.post('/api/sponsor', Sponsors.create)
+routes.get('/api/sponsor', Sponsors.index)
+routes.get('/api/sponsor.details', Sponsors.details)
 
 module.exports = routes
