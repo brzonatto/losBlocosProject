@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
-export function PostForm2() {
+export function PostFormPublicity() {
     const [gols, setGols] = useState({
         golsPro: '', golsContra: ''
     })
@@ -177,4 +177,4 @@ export function PostForm2() {
     )
 }
 
-export default PostForm2
+export default PostFormPublicity

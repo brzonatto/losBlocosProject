@@ -8,7 +8,9 @@ module.exports = {
             cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'sponsors'))
         },
         filename: (req, file, cb) => {
-            cb(null, file.originalname)                      
+            let str = req.body.name_sponsor           
+            
+            cb(null, (str.toLowerCase()).replace(' ', '-') + ".png")                      
         }
     }),
     limits: {
