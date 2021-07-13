@@ -1,6 +1,7 @@
 const routes = require('express').Router()
 const multer = require('multer')
 const multerConfig = require('./config/multer')
+const multerSponsor = require('./config/multerSponsor')
 const jimpConfig = require('./config/jimp')
 const Sponsors = require('./config/sponsorsControl')
 
@@ -19,7 +20,7 @@ routes.post('/make', (req, res) => {
     return res.json(req.body)
 })
 
-routes.post('/api/sponsor', Sponsors.create)
+routes.post('/api/sponsor', multer(multerSponsor).single('image_sponsor'), Sponsors.create)
 routes.get('/api/sponsor', Sponsors.index)
 routes.get('/api/sponsor.details/:_id', Sponsors.details)
 routes.delete('/api/sponsor/:_id', Sponsors.delete)

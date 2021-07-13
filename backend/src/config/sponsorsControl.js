@@ -5,13 +5,16 @@ module.exports = {
         const sponsor = await Sponsors.find()
         res.json(sponsor)
     },
-    async create(req, res) {
-        const { name_sponsor } = req.body
+    async create(req, res) {        
+        const image_sponsor = req.file
+        const { name_sponsor } = req.body    
+            
+        
         let data = {}
 
         let sponsor = await Sponsors.findOne({ name_sponsor })
         if (!sponsor) {
-            data = { name_sponsor }
+            data = { name_sponsor, image_sponsor }            
             sponsor = await Sponsors.create(data)
             return res.status(200).json(sponsor)
         } else {

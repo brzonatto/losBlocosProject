@@ -2,14 +2,13 @@ const multer = require('multer')
 const path = require('path')
 
 module.exports = {
-    dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads'),
+    dest: path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'sponsors'),
     storage: multer.diskStorage({
         destination: (req, file, cb) => {
-            cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads'))
+            cb(null, path.resolve(__dirname, '..', '..', 'tmp', 'uploads', 'sponsors'))
         },
         filename: (req, file, cb) => {
-            cb(null, 'gameImage.jpg')
-                      
+            cb(null, file.originalname)                      
         }
     }),
     limits: {
@@ -17,10 +16,7 @@ module.exports = {
     },
     fileFilter: (req, file, cb) => {
         const allowedMimes = [
-            'image/jpeg',
-            'image/pjpeg',
-            'image/png',
-            'image/jpg'
+            'image/png'            
         ]
 
         if (allowedMimes.includes(file.mimetype)) {
