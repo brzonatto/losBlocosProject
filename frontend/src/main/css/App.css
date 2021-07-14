@@ -37,13 +37,31 @@ aside.logo {
 }
 
 main.main {
-    grid-area: main;
+    grid-area: main;    
 }
 
 aside.nav-area {
-    grid-area: nav;
+    grid-area: nav;    
 }
 
 footer.footer {
+    z-index: 1;
     grid-area: footer;
+}
+
+::-webkit-scrollbar {
+    width: 8px;        
+}
+
+::-webkit-scrollbar-track {    
+    background-color: rgb(51, 51, 51);
+}
+
+::-webkit-scrollbar-thumb {    
+    background-color: rgb(78, 78, 78);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(105, 105, 105);
 }

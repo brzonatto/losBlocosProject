@@ -1,5 +1,9 @@
 aside.logo {
     background-color: rgb(99, 99, 99);
+    background-image: url('../../../assets/images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,6 +11,6 @@ aside.logo {
 
 aside.logo img {
     padding: 10px 20px;
-    width: 100%;
+    width: auto;
     height: 100%;
 }

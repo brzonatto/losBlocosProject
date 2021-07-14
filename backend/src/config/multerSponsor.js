@@ -10,7 +10,7 @@ module.exports = {
         filename: (req, file, cb) => {
             let str = req.body.name_sponsor           
             
-            cb(null, (str.toLowerCase()).replace(' ', '-') + ".png")                      
+            cb(null, (str.toLowerCase()).replace(/\s+/g, '-') + ".png")                      
         }
     }),
     limits: {

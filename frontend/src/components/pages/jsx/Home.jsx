@@ -5,7 +5,7 @@ export const Home = props =>
     <Main>
         <div>Bem Vindo!</div>
         <hr />
-        <p>Sistema</p>
+        <p>Sistema</p>        
     </Main>
 
 export default Home

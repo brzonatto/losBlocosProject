@@ -1,5 +1,8 @@
 aside.nav-area {
-    background-color:  rgb(32, 32, 32);    
+    background-color:  rgb(32, 32, 32);
+    
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: auto; /* Add vertical scrollbar */          
 }
 
 .nav a {
@@ -17,5 +20,6 @@ aside.nav-area {
 }
 
 .nav a:hover {
-    background: linear-gradient(135deg, #07A7E3 0, #32DAC3 100%);
+    background: linear-gradient(135deg, #dfdc3a 0, #474747 100%);
 }
+

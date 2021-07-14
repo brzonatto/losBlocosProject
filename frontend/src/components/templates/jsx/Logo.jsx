@@ -1,6 +1,6 @@
 import '../css/Logo.css'
 import React from 'react'
-import logo from '../../../assets/images/mini-logo.png'
+import logo from '../../../assets/images/losblocos.png'
 
 export const Logo = props =>
     <aside className="logo">

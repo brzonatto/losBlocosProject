@@ -3,6 +3,7 @@ import PostFormPublicity from './PostFormPublicity'
 import Main from '../../templates/jsx/Main'
 const axios = require('axios').default
 
+
 export function Publicity() {    
     const [file, setFile] = useState()    
 
@@ -28,7 +29,7 @@ export function Publicity() {
                 }} />
                  <br />
                 <button onClick={teste}>Submit</button><br /><br />
-
+                
                 <PostFormPublicity />                
             </div>
         </Main>

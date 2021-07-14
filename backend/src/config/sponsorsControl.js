@@ -7,8 +7,7 @@ module.exports = {
     },
     async create(req, res) {        
         const image_sponsor = req.file
-        const { name_sponsor } = req.body    
-            
+        const { name_sponsor } = req.body       
         
         let data = {}
 
