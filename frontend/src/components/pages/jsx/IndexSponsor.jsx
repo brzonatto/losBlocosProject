@@ -43,7 +43,7 @@ export function IndexSponsor() {
                 <TableBody>
                     {sponsors.map((row) => (
                         <TableRow key={row._id}>
-                            <TableCell component="th" scope="row">{row.name_sponsor}</TableCell>
+                            <TableCell component="th" scope="row">{row.name_sponsor}</TableCell>                            
                             <TableCell>Botão img</TableCell>
                             <TableCell align="center">
                                 <IconButton variant="contained" color="primary" >
