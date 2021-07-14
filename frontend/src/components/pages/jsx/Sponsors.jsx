@@ -1,5 +1,6 @@
 import React from 'react'
 import Main from '../../templates/jsx/Main'
+import IndexSponsor from './IndexSponsor'
 import FormSponsors from './FormSponsors'
 
 
@@ -10,6 +11,7 @@ export function Sponsors() {
             <hr />
             <p>Sistema</p>            
             <FormSponsors />
+            <IndexSponsor />
         </Main>
     )
 }

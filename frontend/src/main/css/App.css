@@ -36,7 +36,7 @@ aside.logo {
     grid-area: logo;
 }
 
-main.main {
+main.main {    
     grid-area: main;    
 }
 
@@ -44,8 +44,7 @@ aside.nav-area {
     grid-area: nav;    
 }
 
-footer.footer {
-    z-index: 1;
+footer.footer {    
     grid-area: footer;
 }
 

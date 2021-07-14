@@ -3,7 +3,7 @@ import React from 'react'
 
 export const Main = props =>
     <React.Fragment>
-        <main>
+        <main className="main">
             <div>
                 {props.children}
             </div>            

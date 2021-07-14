@@ -31,7 +31,7 @@ export function Publicity() {
                 <button onClick={teste}>Submit</button><br /><br />
                 
                 <PostFormPublicity />                
-            </div>
+            </div>            
         </Main>
     )
 }
