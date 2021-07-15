@@ -1,14 +1,11 @@
-main.main {
-    margin: 0;
-    padding: 0;
+main.main {           
     overflow-x: hidden; /* Hide horizontal scrollbar */
-    overflow-y: auto; /* Add vertical scrollbar */
+    overflow-y: auto; /* Add vertical scrollbar */ 
 }
 
- main > div {    
-    margin: 15px;
-    padding: 20px;
-    background-color: #FFF;
-    box-shadow: 5px 5px 15px rgba(247, 232, 232, 0.267);
-     
+main > div {
+    background-color: rgb(255, 255, 255);
+    padding: 20px; 
+    margin: 15px;  
 }
+

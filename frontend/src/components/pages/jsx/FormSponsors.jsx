@@ -2,19 +2,23 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Button from '@material-ui/core/Button'
 import { createTheme, ThemeProvider } from '@material-ui/core/styles'
-import { yellow } from '@material-ui/core/colors'
-import SaveIcon from '@material-ui/icons/Save'
+import { green, red } from '@material-ui/core/colors'
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import { Grid } from '@material-ui/core'
 
 
 const theme = createTheme({
     palette: {
         primary: {
             // Yellow play nicely together.
-            main: yellow.A700
+            main: green[400]
         },
         secondary: {
             // This is green.A700 as hex.
-            main: '#11cb5f'
+            main: red[700]
         }
     }
 })
@@ -22,6 +26,17 @@ const theme = createTheme({
 
 
 export function FormSponsors() {
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+
     const [nameSponsor, setNameSponsor] = useState('')
     const [imageSponsor, setImageSponsor] = useState()
 
@@ -50,39 +65,43 @@ export function FormSponsors() {
 
     return (
         <ThemeProvider theme={theme}>
-            <div>   
-                <input
-                    type="text"
-                    name="name_sponsor"
-                    placeholder="Nome"
-                    value={nameSponsor}
-                    onChange={handleChange} />
-                <br />
-                <br />
-                <img id="img" src="" alt=""/>
-                <Button
-                    variant="contained"
-                    component="label"
-                    color="secondary">
-                    Carregar Logo
+            <Button className="teste" variant="contained" color="primary" onClick={handleClickOpen}>
+                Adicionar
+            </Button>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Adicionar Patrocinador</DialogTitle>
+                <DialogContent>
                     <input
-                        type="file"
-                        hidden
-                        name="image_sponsor"
-                        onChange={handleChangeFile}
-                    />
-                </Button>                
-                <br />
-                <br />
-                <Button
-                    onClick={handleSubmit}
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    startIcon={<SaveIcon />}>
-                    Salvar
-                </Button>
-            </div>
+                        type="text"
+                        name="name_sponsor"
+                        placeholder="Nome"
+                        value={nameSponsor}
+                        onChange={handleChange} />
+                    <br />
+                    <br />
+                    <img id="img" src="" alt="" />
+                    <Button
+                        variant="contained"
+                        component="label"
+                        color="secondary">
+                        Carregar Logo
+                        <input
+                            type="file"
+                            hidden
+                            name="image_sponsor"
+                            onChange={handleChangeFile}
+                        />
+                    </Button>
+                </DialogContent>
+                <DialogActions>
+                    <Button variant="contained" onClick={handleClose} color="secondary">
+                        Cancelar
+                    </Button>
+                    <Button variant="contained" onClick={handleSubmit} color="primary">
+                        Salvar
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </ThemeProvider>
     )
 }

@@ -29,7 +29,7 @@ export function Publicity() {
                 }} />
                  <br />
                 <button onClick={teste}>Submit</button><br /><br />
-                
+              
                 <PostFormPublicity />                
             </div>            
         </Main>
