@@ -12,8 +12,6 @@ import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit';
 import { green, red } from '@material-ui/core/colors'
-import Grid from '@material-ui/core/Grid';
-
 
 const useStyles = makeStyles({
     table: {
@@ -34,7 +32,7 @@ const StyledTableCell = withStyles((theme) => ({
 const StyledTableRow = withStyles((theme) => ({
     root: {
         '&:nth-of-type(odd)': {
-            backgroundColor: theme.palette.action.white,
+            backgroundColor: theme.palette.action.hover,
         },
     },
 }))(TableRow);
@@ -67,37 +65,35 @@ export function IndexSponsor() {
 
     return (
         <ThemeProvider theme={theme}>
-            <Paper elevation={3}>
-                <TableContainer>
-                    <Table className={classes.table} aria-label="simple table">
-                        <TableHead>
-                            <TableRow>
-                                <StyledTableCell align="center">Nome</StyledTableCell>
-                                <StyledTableCell align="center">Logo</StyledTableCell>
-                                <StyledTableCell align="center">Opções</StyledTableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {sponsors.map((row) => (
-                                <StyledTableRow hover key={row._id}>
-                                    <TableCell align="center" component="th" scope="row">{row.name_sponsor}</TableCell>
-                                    <TableCell align="center">
-                                        <img src={process.env.PUBLIC_URL + `/images/sponsors/${row.image_sponsor.filename}`} alt="Logo" height="40px" />
-                                    </TableCell>
-                                    <TableCell align="center">
-                                        <IconButton variant="contained" color="inherit" >
-                                            <EditIcon fontSize="small" />
-                                        </IconButton>
-                                        <IconButton variant="contained" color="secondary" aria-label="delete">
-                                            <DeleteIcon fontSize="small" />
-                                        </IconButton>
-                                    </TableCell>
-                                </StyledTableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </Paper>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <StyledTableCell align="center">Logo</StyledTableCell>
+                            <StyledTableCell align="center">Nome</StyledTableCell>
+                            <StyledTableCell align="center">Opções</StyledTableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {sponsors.map((row) => (
+                            <StyledTableRow key={row._id}>
+                                <TableCell align="center">
+                                    <img src={process.env.PUBLIC_URL + `/images/sponsors/${row.image_sponsor.filename}`} alt="Logo" height="40px" />
+                                </TableCell>
+                                <TableCell align="center" component="th" scope="row">{row.name_sponsor}</TableCell>
+                                <TableCell align="center">
+                                    <IconButton variant="contained" color="inherit" >
+                                        <EditIcon fontSize="small" />
+                                    </IconButton>
+                                    <IconButton variant="contained" color="secondary" aria-label="delete">
+                                        <DeleteIcon fontSize="small" />
+                                    </IconButton>
+                                </TableCell>
+                            </StyledTableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </ThemeProvider>
     )
 }

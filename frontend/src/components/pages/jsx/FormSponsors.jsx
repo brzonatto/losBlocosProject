@@ -8,6 +8,11 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Grid } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
+import Card from '@material-ui/core/Card';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardContent from '@material-ui/core/CardContent';
+import CardActions from '@material-ui/core/CardActions';
 
 
 const theme = createTheme({
@@ -45,7 +50,7 @@ export function FormSponsors() {
         const fileReader = new FileReader()
         fileReader.onloadend = () => {
             const preImage = document.getElementById('img')
-            preImage.setAttribute('src', fileReader.result)
+            preImage.setAttribute('image', fileReader.result)
         }
         fileReader.readAsDataURL(imageSponsor)
         setImageSponsor(imageSponsor)
@@ -61,47 +66,57 @@ export function FormSponsors() {
         data.append('name_sponsor', nameSponsor)
         data.append('image_sponsor', imageSponsor)
         axios.post('http://localhost:3000/api/sponsor', data)
+        setOpen(false)
+        Location.forcedReload(true)
     }
 
     return (
         <ThemeProvider theme={theme}>
-            <Button className="teste" variant="contained" color="primary" onClick={handleClickOpen}>
-                Adicionar
-            </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Adicionar Patrocinador</DialogTitle>
-                <DialogContent>
-                    <input
-                        type="text"
-                        name="name_sponsor"
-                        placeholder="Nome"
-                        value={nameSponsor}
-                        onChange={handleChange} />
-                    <br />
-                    <br />
-                    <img id="img" src="" alt="" />
-                    <Button
-                        variant="contained"
-                        component="label"
-                        color="secondary">
-                        Carregar Logo
-                        <input
-                            type="file"
-                            hidden
-                            name="image_sponsor"
-                            onChange={handleChangeFile}
-                        />
-                    </Button>
-                </DialogContent>
-                <DialogActions>
-                    <Button variant="contained" onClick={handleClose} color="secondary">
-                        Cancelar
-                    </Button>
-                    <Button variant="contained" onClick={handleSubmit} color="primary">
-                        Salvar
-                    </Button>
-                </DialogActions>
-            </Dialog>
+            <Grid container style={{ marginBottom: '20px' }} direction="row" justifyContent="flex-end" alignItems="flex-start">
+                <Button className="teste" variant="contained" color="primary" onClick={handleClickOpen}>
+                    Novo
+                </Button>
+                <Dialog fullWidth={true} maxWidth="sm" open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                    <DialogTitle id="form-dialog-title">Adicionar Patrocinador</DialogTitle>
+                    <DialogContent>
+                        <Grid container direction="row" justifyContent="center">
+                            <Grid xs={6}>
+                                <TextField
+                                    id="outlined-basic"
+                                    label="Nome"
+                                    variant="outlined"
+                                    value={nameSponsor}
+                                    onChange={handleChange} />
+                            </Grid>
+                            <Grid xs={6}>
+                                <img id="img" src="" alt="" />
+                                <Button
+                                    variant="contained"
+                                    size="small"
+                                    component="label"
+                                    color="secondary">
+                                    Carregar Logo
+                                    <input
+                                        type="file"
+                                        hidden
+                                        name="image_sponsor"
+                                        onChange={handleChangeFile}
+                                    />
+                                </Button>
+
+                            </Grid>
+                        </Grid>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button variant="contained" onClick={handleClose} color="secondary">
+                            Cancelar
+                        </Button>
+                        <Button variant="contained" onClick={handleSubmit} color="primary">
+                            Salvar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </Grid>
         </ThemeProvider>
     )
 }

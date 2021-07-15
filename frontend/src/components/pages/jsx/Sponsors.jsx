@@ -7,13 +7,14 @@ import { Typography, Divider } from '@material-ui/core'
 export function Sponsors() {    
     return (
         <Main>
+            
             <Typography variant="h3">
                 Patrocinadores
             </Typography>
             <Typography variant="subtitle1">
                 Gerenciador de Patrocinadores
-            </Typography>
-            <Divider />
+            </Typography>            
+            <Divider style={{marginBottom: '20px'}} />
             <FormSponsors />
             <IndexSponsor />
         </Main>
